@@ -16,4 +16,11 @@
     <dimen name="distance_between_buttons">16dp</dimen>
     <dimen name="arrow_dimensions">16dp</dimen>
     <dimen name="icon_padding">12dp</dimen>
+    <dimen name="search_padding">8dp</dimen>
+
+    <dimen name="text_normal">22sp</dimen>
+    <dimen name="padding_large">16dp</dimen>
+    <dimen name="text_small">16sp</dimen>
+
+
 </resources>

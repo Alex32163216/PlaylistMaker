@@ -1,19 +1,39 @@
 package com.example.playlistmaker
 
 import android.content.Intent
-import android.widget.ImageView
-import android.os.Bundle
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.widget.TextView
 
-
-class SettingActivity:AppCompatActivity(){
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+class SettingActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
 
-        val arrowBack = findViewById<ImageView>(R.id.setting2)
-        arrowBack.setOnClickListener {
-            finish()
+//-----Кнопка возврата------//
+        findViewById<androidx.appcompat.widget.Toolbar>(R.id.back).setNavigationOnClickListener{ finish()
+        }
+
+//-----Поделиться приложением------//
+        findViewById<TextView>(R.id.share).setOnClickListener {
+            Intent(Intent.ACTION_SEND).apply {
+                putExtra(Intent.EXTRA_TEXT, getString(R.string.share_ink))
+                type = "text/plain"
+                startActivity(this)
+            }
+        }
+
+//-----Написать в поддержку------//
+        findViewById<TextView>(R.id.write_to_support).setOnClickListener {Intent(Intent.ACTION_SENDTO).apply {data = Uri.parse("mailto:")
+            putExtra(Intent.EXTRA_EMAIL, arrayOf(getString(R.string.my_e_mail)))
+            putExtra(Intent.EXTRA_SUBJECT, getString(R.string.massage_subject))
+            putExtra(Intent.EXTRA_TEXT, getString(R.string.message_text))
+            startActivity(this)
+        }
+        }
+
+//-----Пользовательское соглашение------//
+        findViewById<TextView>(R.id.terms_of_use).setOnClickListener {startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.web_page_links))))
         }
     }
 }
