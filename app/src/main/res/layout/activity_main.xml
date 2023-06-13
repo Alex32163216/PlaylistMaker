@@ -3,84 +3,37 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/back_screen_blue"
+    android:background="?attr/colorSecondary"
     android:orientation="vertical">
 
-    <FrameLayout
-        android:layout_width="@dimen/playlist_width"
-        android:layout_height="@dimen/playlist_height"
-        android:background="@color/back_screen_blue">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/indent_left_edge"
-            android:layout_marginTop="14dp"
-            android:fontFamily="@font/text_medium"
-            android:text="@string/name_list"
-            android:textColor="@color/playlist_color"
-            android:textSize="@dimen/playlist_text_size" />
-    </FrameLayout>
+    <TextView
+        style="@style/PlaylistMaker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/indent_left_edge"
+        android:layout_marginTop="14dp"
+        android:text=   "@string/name_list" />
 
     <Button
         android:id="@+id/search"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginHorizontal="@dimen/x_axis_buttons"
+        style="@style/StyleButtons"
         android:layout_marginTop="40dp"
-        android:layout_weight="1"
-        android:backgroundTint="@color/playlist_color"
-        android:fontFamily="@font/text_medium"
-        android:foreground="?attr/selectableItemBackground"
         android:text="@string/search_name"
-        android:textAllCaps="false"
-        android:textColor="@color/buttons_color"
-        android:textSize="@dimen/playlist_text_size"
-        app:cornerRadius="@dimen/corner_rounding"
-        app:icon="@drawable/vector1"
-        app:iconGravity="textStart"
-        app:iconSize="@dimen/icon_size_search"
-        app:iconTint="@color/buttons_color" />
+        app:icon="@drawable/vector1" />
 
     <Button
         android:id="@+id/media"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginHorizontal="@dimen/x_axis_buttons"
+        style="@style/StyleButtons"
         android:layout_marginTop="@dimen/distance_between_buttons"
-        android:layout_weight="1"
-        android:backgroundTint="@color/playlist_color"
-        android:fontFamily="@font/text_medium"
-        android:foreground="?attr/selectableItemBackground"
         android:text="@string/media_name"
-        android:textAllCaps="false"
-        android:textColor="@color/buttons_color"
-        android:textSize="@dimen/playlist_text_size"
-        app:cornerRadius="@dimen/corner_rounding"
-        app:icon="@drawable/vector2"
-        app:iconGravity="textStart"
-        app:iconSize="@dimen/icon_size_media"
-        app:iconTint="@color/buttons_color" />
+        app:icon="@drawable/vector2" />
 
     <Button
         android:id="@+id/setting"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginHorizontal="@dimen/x_axis_buttons"
+        style="@style/StyleButtons"
         android:layout_marginTop="@dimen/distance_between_buttons"
         android:layout_marginBottom="28dp"
-        android:layout_weight="1"
-        android:backgroundTint="@color/playlist_color"
-        android:fontFamily="@font/text_medium"
-        android:foreground="?attr/selectableItemBackground"
         android:text="@string/setting_name"
-        android:textAllCaps="false"
-        android:textColor="@color/buttons_color"
-        android:textSize="@dimen/playlist_text_size"
-        app:cornerRadius="@dimen/corner_rounding"
-        app:icon="@drawable/vector3"
-        app:iconGravity="textStart"
-        app:iconSize="@dimen/icon_size_set_up"
-        app:iconTint="@color/buttons_color" />
+        app:icon="@drawable/vector3" />
 
 </LinearLayout>

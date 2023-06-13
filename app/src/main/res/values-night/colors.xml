@@ -1,25 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="playlist_buttons_color">#FFFFFF</color>//цвет фона 3-х кнопок в мейне на гл. экране
-    <color name="background_main">#3772E7</color>// цвет заднего фона в мейне
+    <color name="background_main">#1A1B22</color>// цвет заднего фона в мейне
     <color name="playlist_maker_color">#FFFFFF</color>// цвет Playlist Maker в мейне
     <color name="buttons_color_text">#1A1B22</color>// цвет текста наименования кнопок в мейне
     <color name="buttons_color_icon">#1A1B22</color>// цвет иконок 3-х кнопок  в мейне
 
 
-    <color name="background_everywhere">#FFFFFF</color>// цвет заднего фона везде кроме мейна
-    <color name="text_everywhere">#1A1B22</color>// цвет текста везде кроме мейна
-    <color name="gray_icon_color">#AEAFB4</color> //цвет серых иконок в сеттинг/белых в темной реж
-    <color name="switch_color_circle">#AEAFB4</color>// цвет переключателя в сеттинг (кружок)
-    <color name="switch_color_oval">#E6E8EB</color>// цвет переключателя в сеттинг (овал)
+    <color name="background_everywhere">#1A1B22</color>// цвет заднего фона везде кроме мейна
+    <color name="text_everywhere">#FFFFFF</color>// цвет текста везде кроме мейна
+    <color name="gray_icon_color">#FFFFFF</color>// цвет серых иконок в сеттинг/белых в темной реж
+    <color name="switch_color_circle">#3772E7</color>// цвет переключателя в сеттинг (кружок)
+    <color name="switch_color_oval">#7A3772E7</color>// цвет переключателя в сеттинг (овал)
 
-    <color name="light_gray">#E6E8EB</color> // цвет фона поисковика в серче
-    <color name="grey_white">#AEAFB4</color> // цвет лупы и крестика в поисковике серча
+    <color name="light_gray">#FFFFFF</color> // цвет фона поисковика в серче
+    <color name="grey_white">#1A1B22</color> // цвет лупы, текста и крестика в поисковике серча
     <color name="black_text">#1A1B22</color> // цвет текста при вводе в серче
 
-
     <color name="white">#FFFFFF</color>
-    <color name="new_black_color">#000000</color>
     <color name="black">#FF000000</color>
     <color name="blue">#3772e7</color>
     <color name="gray">#AEAFB4</color>
@@ -30,9 +28,7 @@
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="new_white">#40FFFFFF</color>
-
-
-
+    <color name="new_black_color">#000000</color>
 
 
 </resources>
