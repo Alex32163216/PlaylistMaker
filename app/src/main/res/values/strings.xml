@@ -18,4 +18,9 @@
     //-----Пользовательское соглашение------//
     <string name="web_page_links">https://yandex.ru/legal/practicum_offer/</string>
 
+    <string name="artist_name">Имя исполнителя</string>
+    <string name="song_title">Название композиции</string>
+    <string name="temporary_time">00:00</string>
+
+
 </resources>

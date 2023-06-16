@@ -17,10 +17,12 @@
     <dimen name="arrow_dimensions">16dp</dimen>
     <dimen name="icon_padding">12dp</dimen>
     <dimen name="search_padding">8dp</dimen>
-
     <dimen name="text_normal">22sp</dimen>
     <dimen name="padding_large">16dp</dimen>
     <dimen name="text_small">16sp</dimen>
-
+    <dimen name="plug_size">45dp</dimen>
+    <dimen name="song_title">0dp</dimen>
+    <dimen name="radius">2dp</dimen>
+    <dimen name="artist_name">10sp</dimen>
 
 </resources>
