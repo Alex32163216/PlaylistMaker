@@ -42,11 +42,13 @@
             <ImageView
                 style="@style/Ellipse"
                 android:layout_marginHorizontal="6dp"
+                android:layout_weight="0"
                 android:src="@drawable/ellipse_1" />
 
             <TextView
                 android:id="@+id/tTime"
                 style="@style/ArtistName"
+                android:layout_weight="0"
                 tools:text="@string/temporary_time" />
         </LinearLayout>
     </LinearLayout>

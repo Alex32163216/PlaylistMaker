@@ -7,11 +7,12 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import kotlin.collections.ArrayList
 
 data class Track(
     val trackName: String, // Название композиции
     val artistName: String, // Имя исполнителя
-    val trackTime: String, // Продолжительность трека
+    val trackTimeMillis: Int, // Продолжительность трека
     val artworkUrl100: String // Ссылка на изображение обложки
 )
 
@@ -27,7 +28,7 @@ class TrackViewer(parentView: ViewGroup) : RecyclerView.ViewHolder(
     fun bind(model: Track) {
         trackName2.text = model.trackName
         artistName2.text = model.artistName
-        trackTime2.text = model.trackTime
+        trackTime2.text = Time.millisToStrFormat(model.trackTimeMillis)
         Glide.with(itemView)
             .load(model.artworkUrl100)
             .placeholder(R.drawable.vector9)
@@ -37,7 +38,7 @@ class TrackViewer(parentView: ViewGroup) : RecyclerView.ViewHolder(
 }
 
 class TracksAdapter(
-    private val track: List<Track>
+    private val track: ArrayList<Track>
 ) : RecyclerView.Adapter<TrackViewer>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TrackViewer {

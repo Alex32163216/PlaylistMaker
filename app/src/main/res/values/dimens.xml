@@ -25,4 +25,9 @@
     <dimen name="radius">2dp</dimen>
     <dimen name="artist_name">10sp</dimen>
 
+
+
+    <dimen name="er_ph_text_size">19sp</dimen>
+    <dimen name="er_ph_butt_text_size">14sp</dimen>
+
 </resources>
