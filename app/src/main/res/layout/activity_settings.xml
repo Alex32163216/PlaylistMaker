@@ -8,17 +8,17 @@
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/back"
-        style="@style/name_header"
+        style="@style/NameHeader"
         android:paddingBottom="22dp"
         app:title="@string/setting_name" />
 
     <com.google.android.material.switchmaterial.SwitchMaterial
         android:id="@+id/dark_theme"
         style="@style/StyleButtonsSetting"
-        android:text="@string/dark_name"
         android:layout_width="match_parent"
-        app:trackTint="@color/switch_color_oval"
-        app:thumbTint="@color/switch_color_circle"/>
+        android:text="@string/dark_name"
+        app:thumbTint="@color/switch_color_circle"
+        app:trackTint="@color/switch_color_oval" />
 
     <TextView
         android:id="@+id/share"

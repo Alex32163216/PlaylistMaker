@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <style name="StyleButtons" parent="Widget.MaterialComponents.Button.UnelevatedButton">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">0dp</item>
@@ -23,7 +24,7 @@
         <item name="android:textSize">@dimen/playlist_text_size</item>
     </style>
 
-    <style name="name_header">
+    <style name="NameHeader">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:minHeight">60dp</item>
@@ -67,7 +68,32 @@
         <item name="android:src">@drawable/clear</item>
     </style>
 
+    <style name="SongTitle">
+        <item name="android:textColor">?attr/colorOnPrimary</item>
+        <item name="fontFamily">@font/ys_display_regular</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@null</item>
+        <item name="fontWeight">400</item>
+        <item name="android:textSize">@dimen/button_text_size</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+    </style>
 
+    <style name="ArtistName">
+        <item name="android:textColor">@color/gray_icon_color</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="fontFamily">@font/ys_display_regular</item>
+        <item name="fontWeight">400</item>
+        <item name="android:textSize">@dimen/artist_name</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+    </style>
 
-
+    <style name="Ellipse">
+        <item name="tint">@color/gray_icon_color</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
 </resources>

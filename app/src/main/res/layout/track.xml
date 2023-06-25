@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/icon_padding"
+    android:gravity="center_vertical"
+    android:minHeight="@dimen/icon_padding"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/aUrl100"
+        android:layout_width="@dimen/plug_size"
+        android:layout_height="@dimen/plug_size"
+        android:scaleType="centerCrop"
+        tools:src="@drawable/vector9" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/search_padding"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tName"
+            style="@style/SongTitle"
+            tools:text="@string/song_title" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/aName"
+                style="@style/ArtistName"
+                android:layout_weight="1"
+                tools:text="@string/artist_name" />
+
+            <ImageView
+                style="@style/Ellipse"
+                android:layout_marginHorizontal="6dp"
+                android:src="@drawable/ellipse_1" />
+
+            <TextView
+                android:id="@+id/tTime"
+                style="@style/ArtistName"
+                tools:text="@string/temporary_time" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <ImageView
+        style="@style/Ellipse"
+        android:gravity="end"
+        android:padding="@dimen/icon_padding"
+        android:src="@drawable/vector8" />
+</LinearLayout>
