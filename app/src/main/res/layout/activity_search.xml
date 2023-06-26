@@ -66,7 +66,7 @@
                 android:id="@+id/error_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/vector10" />
+                android:src="@drawable/no_network" />
 
             <TextView
                 android:id="@+id/error_3"

@@ -23,7 +23,7 @@ class SearchActivity : AppCompatActivity() {
         const val REQUEST_SEARCH = "REQUEST_SEARCH"
     }
 
-    enum class StateType {
+    private enum class StateType {
         CONNECTION_ERROR, NOT_FOUND, SEARCH_RESULT
     }
 
@@ -141,14 +141,14 @@ class SearchActivity : AppCompatActivity() {
                 refreshButtPh.visibility = View.VISIBLE
 
 
-                errorIcPh.setImageResource(R.drawable.vector10)
+                errorIcPh.setImageResource(R.drawable.no_network)
                 errorTextPh.setText(R.string.ph_no_connection)
             }
             StateType.NOT_FOUND -> {
                 recyclerViewTrack.visibility = View.GONE
                 errorPh.visibility = View.VISIBLE
                 refreshButtPh.visibility = View.GONE
-                errorIcPh.setImageResource(R.drawable.vector11)
+                errorIcPh.setImageResource(R.drawable.nothing_found)
                 errorTextPh.setText(R.string.ph_not_found)
             }
             StateType.SEARCH_RESULT -> {
