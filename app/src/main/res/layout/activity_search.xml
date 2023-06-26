@@ -14,16 +14,18 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/text_normal"
         android:layout_marginHorizontal="@dimen/corner_rounding"
-        android:orientation="horizontal"
+        android:layout_marginBottom="@dimen/text_normal"
         android:background="@drawable/search_engine"
+        android:orientation="horizontal"
         android:padding="@dimen/icon_padding">
+
         <ImageView
             style="@style/Search"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center" />
+
         <EditText
             android:id="@+id/enteringSearchQuery"
             style="@style/TextSearch"
@@ -35,16 +37,48 @@
             android:inputType="text"
             android:maxLines="1"
             android:singleLine="true" />
+
         <ImageView
             android:id="@+id/windowCleaning"
             style="@style/MissingCross"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:visibility="gone" />
     </LinearLayout>
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/compositionSearch"
+
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/trackSearch"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <LinearLayout
+            android:id="@+id/error"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/error_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/no_network" />
+
+            <TextView
+                android:id="@+id/error_3"
+                style="@style/Error"
+                android:padding="@dimen/text_normal"
+                android:text="@string/ph_no_connection" />
+
+            <Button
+                android:id="@+id/refresh"
+                style="@style/Refresh"
+                android:text="@string/refresh_but"
+                android:visibility="gone" />
+        </LinearLayout>
+    </FrameLayout>
 </LinearLayout>
