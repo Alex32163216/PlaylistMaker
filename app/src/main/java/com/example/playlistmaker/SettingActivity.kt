@@ -5,6 +5,7 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
+import com.google.android.material.switchmaterial.SwitchMaterial
 
 class SettingActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,5 +41,14 @@ class SettingActivity : AppCompatActivity() {
         findViewById<TextView>(R.id.terms_of_use).setOnClickListener {
             startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.web_page_links))))
         }
+
+//-----Перекл. черного/анти -плаща ------//
+        val themeSwitcher = findViewById<SwitchMaterial>(R.id.dark_theme)
+        themeSwitcher.isChecked = (applicationContext as Additionally).darkwingDuck
+        themeSwitcher.setOnCheckedChangeListener { switcher, checked ->
+            (applicationContext as Additionally).switchTheme(checked)
+        }
+
     }
+
 }

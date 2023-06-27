@@ -8,6 +8,7 @@ import android.view.inputmethod.InputMethodManager
 import android.util.Log
 import android.view.View
 import android.text.Editable
+import com.example.playlistmaker.Additionally.Companion.ADDITIONALLY
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import android.view.inputmethod.EditorInfo
@@ -24,12 +25,10 @@ class SearchActivity : AppCompatActivity() {
     }
 
     private enum class StateType {
-        CONNECTION_ERROR, NOT_FOUND, SEARCH_RESULT
+        CONNECTION_ERROR, NOT_FOUND, SEARCH_RESULT, HISTORY_LIST,
     }
 
     private var editRequest: String = ""
-
-
     private val itunesBaseUrl = "https://itunes.apple.com"
     private val retrofit = Retrofit.Builder()
         .baseUrl(itunesBaseUrl)
@@ -38,7 +37,10 @@ class SearchActivity : AppCompatActivity() {
     private val itunesService = retrofit.create(Itunes::class.java)
 
     private val searchTrackList = ArrayList<Track>()
-    private val trackAdapter = TracksAdapter(searchTrackList)
+    private val trackAdapter = TracksAdapter { clickOnTrack(it) }
+    private val historyTrackAdapter = TracksAdapter { clickOnTrack(it) }
+
+    private lateinit var searchHistory: History
     private lateinit var enteringSearchQuery: EditText
     private lateinit var clearInputQuery: ImageView
     private lateinit var recyclerViewTrack: RecyclerView
@@ -46,6 +48,8 @@ class SearchActivity : AppCompatActivity() {
     private lateinit var errorTextPh: TextView
     private lateinit var errorIcPh: ImageView
     private lateinit var errorPh: LinearLayout
+    private lateinit var clearHistoryButton: Button
+    private lateinit var titleHistory: TextView
 
     private val searchWatcher = object : TextWatcher {
         override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
@@ -53,11 +57,20 @@ class SearchActivity : AppCompatActivity() {
         override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
             clearInputQuery.visibility = clearInputQueryVisibility(s)
             editRequest = s.toString()
+            if (enteringSearchQuery.hasFocus() && s.isNullOrEmpty() && searchHistory.getList()
+                    .isNotEmpty()
+            ) showState(StateType.HISTORY_LIST)
+            else showState(StateType.SEARCH_RESULT)
 
             Log.i("i", "Текст запроса - $editRequest")
         }
 
-        override fun afterTextChanged(s: Editable?) {}
+        override fun afterTextChanged(s: Editable?) {
+            if (enteringSearchQuery.hasFocus() && searchHistory.getList().isNotEmpty()) showState(
+                StateType.HISTORY_LIST
+            )
+            else showState(StateType.SEARCH_RESULT)
+        }
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -80,7 +93,7 @@ class SearchActivity : AppCompatActivity() {
         recyclerViewTrack = findViewById(R.id.trackSearch)
         recyclerViewTrack.layoutManager = LinearLayoutManager(this)
 
-        recyclerViewTrack.adapter = trackAdapter
+        searchHistory = History(getSharedPreferences(ADDITIONALLY, MODE_PRIVATE))
 
         enteringSearchQuery = findViewById(R.id.enteringSearchQuery)
         enteringSearchQuery.addTextChangedListener(searchWatcher)
@@ -91,6 +104,9 @@ class SearchActivity : AppCompatActivity() {
                 true
             }
             false
+        }
+        enteringSearchQuery.setOnFocusChangeListener { view, hasFocus ->
+            if (searchHistory.getList().isNotEmpty() && hasFocus) showState(StateType.HISTORY_LIST)
         }
 
         clearInputQuery = findViewById(R.id.windowCleaning)
@@ -110,6 +126,16 @@ class SearchActivity : AppCompatActivity() {
         errorIcPh = findViewById(R.id.error_2)
         errorTextPh = findViewById(R.id.error_3)
         errorPh = findViewById(R.id.error)
+
+        clearHistoryButton = findViewById(R.id.clear_history_butt)
+        titleHistory = findViewById(R.id.history_title)
+
+        clearHistoryButton.setOnClickListener {
+            searchHistory.clearList()
+            showState(StateType.SEARCH_RESULT)
+        } //  очистка истории
+        enteringSearchQuery.requestFocus() //  фокус на поисковую строку
+
     }
 
     private fun clearInputQueryVisibility(s: CharSequence?): Int {
@@ -143,6 +169,8 @@ class SearchActivity : AppCompatActivity() {
 
                 errorIcPh.setImageResource(R.drawable.no_network)
                 errorTextPh.setText(R.string.ph_no_connection)
+                titleHistory.visibility = View.GONE
+                clearHistoryButton.visibility = View.GONE
             }
             StateType.NOT_FOUND -> {
                 recyclerViewTrack.visibility = View.GONE
@@ -150,11 +178,29 @@ class SearchActivity : AppCompatActivity() {
                 refreshButtPh.visibility = View.GONE
                 errorIcPh.setImageResource(R.drawable.nothing_found)
                 errorTextPh.setText(R.string.ph_not_found)
+                titleHistory.visibility = View.GONE
+                clearHistoryButton.visibility = View.GONE
+
             }
             StateType.SEARCH_RESULT -> {
+
+
+                trackAdapter.track = searchTrackList
+                recyclerViewTrack.adapter = trackAdapter
                 recyclerViewTrack.visibility = View.VISIBLE
                 errorPh.visibility = View.GONE
                 refreshButtPh.visibility = View.GONE
+                titleHistory.visibility = View.GONE
+                clearHistoryButton.visibility = View.GONE
+            }
+            StateType.HISTORY_LIST -> {
+                historyTrackAdapter.track = searchHistory.getList()
+                recyclerViewTrack.adapter = historyTrackAdapter
+                recyclerViewTrack.visibility = View.VISIBLE
+                errorPh.visibility = View.GONE
+                refreshButtPh.visibility = View.GONE
+                titleHistory.visibility = View.VISIBLE
+                clearHistoryButton.visibility = View.VISIBLE
             }
         }
     }
@@ -183,4 +229,11 @@ class SearchActivity : AppCompatActivity() {
                 })
         }
     }
+
+    private fun clickOnTrack(track: Track) {
+
+        searchHistory.addTrack(track)
+
+    }
+
 }

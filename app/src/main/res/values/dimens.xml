@@ -24,10 +24,11 @@
     <dimen name="song_title">0dp</dimen>
     <dimen name="radius">2dp</dimen>
     <dimen name="artist_name">10sp</dimen>
-
+    <dimen name="padding_main">22dp</dimen>
 
 
     <dimen name="er_ph_text_size">19sp</dimen>
     <dimen name="er_ph_butt_text_size">14sp</dimen>
+    <dimen name="padding_title_search">20dp</dimen>
 
 </resources>
