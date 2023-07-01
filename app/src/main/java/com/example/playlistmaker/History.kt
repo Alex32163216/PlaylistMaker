@@ -10,10 +10,10 @@ class History(val sharedPreferences: SharedPreferences) {
         const val HISTORY = "HISTORY"
     }
 
-    private fun saveList(historyTrack: ArrayList<Track>) {
-        val jSON = Gson().toJson(historyTrack)
+    private fun saveList(historyTracks: ArrayList<Track>) {
+        val i = Gson().toJson(historyTracks)
         sharedPreferences.edit()
-            .putString(HISTORY, jSON)
+            .putString(HISTORY, i)
             .apply()
     }
 

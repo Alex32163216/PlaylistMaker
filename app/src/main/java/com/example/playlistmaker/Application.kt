@@ -6,28 +6,28 @@ import android.content.res.Configuration
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.appcompat.app.AppCompatDelegate
 
-class Additionally : Application() {
+class Application : Application() {
 
     companion object {
-        const val ADDITIONALLY = "ADDITIONALLY"
-        const val DARKWING_DUCK = "DARKWING_DUCK"
+        const val APPLICATION = "APPLICATION"
+        const val DARK_THEME = "DARK_THEME"
     }
 
-    var darkwingDuck = false
+    var darkTheme = false
 
     override fun onCreate() {
         super.onCreate()
-        val sharedPrefs = getSharedPreferences(ADDITIONALLY, MODE_PRIVATE)
-        darkwingDuck = sharedPrefs.getBoolean(DARKWING_DUCK, isDarkThemeOn())
-        switchTheme(darkwingDuck)
+        val sharedPrefs = getSharedPreferences(APPLICATION, MODE_PRIVATE)
+        darkTheme = sharedPrefs.getBoolean(DARK_THEME, isDarkThemeOn())
+        switchTheme(darkTheme)
     }
 
     fun switchTheme(darkThemeEnabled: Boolean) {
-        if (darkThemeEnabled != darkwingDuck) {
-            darkwingDuck = darkThemeEnabled
-            val sharedPrefs = getSharedPreferences(ADDITIONALLY, MODE_PRIVATE)
+        if (darkThemeEnabled != darkTheme) {
+            darkTheme = darkThemeEnabled
+            val sharedPrefs = getSharedPreferences(APPLICATION, MODE_PRIVATE)
             sharedPrefs.edit()
-                .putBoolean(DARKWING_DUCK, darkwingDuck)
+                .putBoolean(DARK_THEME, darkTheme)
                 .apply()
         }
 

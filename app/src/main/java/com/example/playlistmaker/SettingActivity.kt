@@ -44,9 +44,9 @@ class SettingActivity : AppCompatActivity() {
 
 //-----Перекл. черного/анти -плаща ------//
         val themeSwitcher = findViewById<SwitchMaterial>(R.id.dark_theme)
-        themeSwitcher.isChecked = (applicationContext as Additionally).darkwingDuck
+        themeSwitcher.isChecked = (applicationContext as Application).darkTheme
         themeSwitcher.setOnCheckedChangeListener { switcher, checked ->
-            (applicationContext as Additionally).switchTheme(checked)
+            (applicationContext as Application).switchTheme(checked)
         }
 
     }

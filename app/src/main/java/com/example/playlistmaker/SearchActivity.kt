@@ -8,7 +8,7 @@ import android.view.inputmethod.InputMethodManager
 import android.util.Log
 import android.view.View
 import android.text.Editable
-import com.example.playlistmaker.Additionally.Companion.ADDITIONALLY
+import com.example.playlistmaker.Application.Companion.APPLICATION
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import android.view.inputmethod.EditorInfo
@@ -57,8 +57,9 @@ class SearchActivity : AppCompatActivity() {
         override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
             clearInputQuery.visibility = clearInputQueryVisibility(s)
             editRequest = s.toString()
-            if (enteringSearchQuery.hasFocus() && s.isNullOrEmpty() && searchHistory.getList()
-                    .isNotEmpty()
+            if (enteringSearchQuery.hasFocus()
+                && s.isNullOrEmpty()
+                && searchHistory.getList().isNotEmpty()
             ) showState(StateType.HISTORY_LIST)
             else showState(StateType.SEARCH_RESULT)
 
@@ -93,7 +94,7 @@ class SearchActivity : AppCompatActivity() {
         recyclerViewTrack = findViewById(R.id.trackSearch)
         recyclerViewTrack.layoutManager = LinearLayoutManager(this)
 
-        searchHistory = History(getSharedPreferences(ADDITIONALLY, MODE_PRIVATE))
+        searchHistory = History(getSharedPreferences(APPLICATION, MODE_PRIVATE))
 
         enteringSearchQuery = findViewById(R.id.enteringSearchQuery)
         enteringSearchQuery.addTextChangedListener(searchWatcher)
