@@ -49,10 +49,40 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+        <TextView style="@style/SearchTitle"
+            android:id="@+id/history_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:padding="@dimen/padding_title_search"
+            android:text="@string/search_title"
+            android:visibility="gone"/>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/trackSearch"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="wrap_content" />
+
+            <com.google.android.material.button.MaterialButton
+                style="@style/Refresh"
+                android:id="@+id/clear_history_butt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minHeight="36dp"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/padding_main"
+                android:text="@string/clear_history_butt"
+                android:visibility="gone" />
+        </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
 
         <LinearLayout
             android:id="@+id/error"
@@ -74,7 +104,7 @@
                 android:padding="@dimen/text_normal"
                 android:text="@string/ph_no_connection" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/refresh"
                 style="@style/Refresh"
                 android:text="@string/refresh_but"

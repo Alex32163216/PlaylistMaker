@@ -10,6 +10,7 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import kotlin.collections.ArrayList
 
 data class Track(
+    val trackId: Int, //уникальный номер трека
     val trackName: String, // Название композиции
     val artistName: String, // Имя исполнителя
     val trackTimeMillis: Int, // Продолжительность трека
@@ -38,9 +39,9 @@ class TrackViewer(parentView: ViewGroup) : RecyclerView.ViewHolder(
 }
 
 class TracksAdapter(
-    private val track: ArrayList<Track>
+    private val clickListener: ClickListener,
 ) : RecyclerView.Adapter<TrackViewer>() {
-
+    lateinit var track : ArrayList<Track>
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TrackViewer {
         return TrackViewer(parent)
 
@@ -48,7 +49,13 @@ class TracksAdapter(
 
     override fun onBindViewHolder(viewer: TrackViewer, position: Int) {
         viewer.bind(track[position])
+
+        viewer.itemView.setOnClickListener{ clickListener.click(track[position])}
     }
 
     override fun getItemCount(): Int = track.size
+    fun interface ClickListener {
+        fun click(track: Track)
+    }
+
 }
