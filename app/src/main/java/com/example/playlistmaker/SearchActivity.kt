@@ -1,5 +1,6 @@
 package com.example.playlistmaker
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.*
@@ -11,6 +12,7 @@ import android.text.Editable
 import com.example.playlistmaker.Application.Companion.APPLICATION
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.gson.Gson
 import android.view.inputmethod.EditorInfo
 import com.practicum.playlistmaker.apple.Itunes
 import retrofit2.Call
@@ -22,6 +24,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 class SearchActivity : AppCompatActivity() {
     companion object {
         const val REQUEST_SEARCH = "REQUEST_SEARCH"
+        const val TRACK = "TRACK"
     }
 
     private enum class StateType {
@@ -29,7 +32,7 @@ class SearchActivity : AppCompatActivity() {
     }
 
     private var editRequest: String = ""
-    private val itunesBaseUrl = "https://itunes.apple.com"
+    private val itunesBaseUrl = "http://itunes.apple.com"
     private val retrofit = Retrofit.Builder()
         .baseUrl(itunesBaseUrl)
         .addConverterFactory(GsonConverterFactory.create())
@@ -232,8 +235,10 @@ class SearchActivity : AppCompatActivity() {
     }
 
     private fun clickOnTrack(track: Track) {
-
         searchHistory.addTrack(track)
+        val playerIntent = Intent(this, PlayerActivity::class.java)
+        playerIntent.putExtra(TRACK,Gson().toJson(track))
+        startActivity(playerIntent)
 
     }
 
