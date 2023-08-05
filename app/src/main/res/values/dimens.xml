@@ -25,10 +25,19 @@
     <dimen name="radius">2dp</dimen>
     <dimen name="artist_name">10sp</dimen>
     <dimen name="padding_main">22dp</dimen>
-
-
     <dimen name="er_ph_text_size">19sp</dimen>
     <dimen name="er_ph_butt_text_size">14sp</dimen>
     <dimen name="padding_title_search">20dp</dimen>
+    <dimen name="height_points">60dp</dimen>
+
+
+    <dimen name="margin_player">24dp</dimen>
+    <dimen name="medium_margin_player">12dp</dimen>
+    <dimen name="margin_player_butt">40dp</dimen>
+    <dimen name="margin_player_text">16dp</dimen>
+    <dimen name="margin_player_butt_to_text">30dp</dimen>
+    <dimen name="player_info">13sp</dimen>
+    <dimen name="play_time">14sp</dimen>
+    <dimen name="art_work_radius_player">8dp</dimen>
 
 </resources>
