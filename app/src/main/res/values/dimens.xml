@@ -29,7 +29,7 @@
     <dimen name="er_ph_butt_text_size">14sp</dimen>
     <dimen name="padding_title_search">20dp</dimen>
     <dimen name="height_points">60dp</dimen>
-
+    <dimen name="progress_bar_size">44dp</dimen>
 
     <dimen name="margin_player">24dp</dimen>
     <dimen name="medium_margin_player">12dp</dimen>
