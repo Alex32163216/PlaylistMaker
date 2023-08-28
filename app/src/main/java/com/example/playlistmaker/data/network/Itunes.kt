@@ -1,10 +1,9 @@
-package com.practicum.playlistmaker.apple
+package com.example.playlistmaker.data.network
 
-import com.example.playlistmaker.TrackResponse
+import com.example.playlistmaker.data.dto.TrackResponse
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
-
 
 interface Itunes {
     @GET("/search?entity=song")
