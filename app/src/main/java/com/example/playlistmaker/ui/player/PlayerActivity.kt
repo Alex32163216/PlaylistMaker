@@ -7,15 +7,13 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.view.isVisible
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.google.gson.Gson
 import com.example.playlistmaker.R
-import com.example.playlistmaker.Track
+import com.example.playlistmaker.domain.models.Track
 import com.example.playlistmaker.presentation.player.PlayerPresenter
 import com.example.playlistmaker.presentation.player.PlayerView
 import com.example.playlistmaker.ui.search.SearchActivity.Companion.TRACK
 import com.example.playlistmaker.utils.Creator
-
 
 class PlayerActivity : AppCompatActivity(), PlayerView {
     private lateinit var presenter: PlayerPresenter
@@ -91,10 +89,9 @@ class PlayerActivity : AppCompatActivity(), PlayerView {
     }
 
     override fun setArtwork(url: String) {
-        Glide.with(artwork).load(url.replaceAfterLast('/', "512x512bb.jpg"))
+        Glide.with(artwork)
+            .load(url.replaceAfterLast('/', "512x512bb.jpg"))
             .placeholder(R.drawable.vector9)
-            .transform(RoundedCorners(artwork.resources.getDimensionPixelSize(R.dimen.art_work_radius_player)))
-            .into(artwork)
     }
 
     override fun setCollection(name: String) {

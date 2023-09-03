@@ -1,6 +1,5 @@
 package com.example.playlistmaker.ui.main
 
-
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

@@ -50,7 +50,5 @@ class SettingActivity : AppCompatActivity() {
         themeSwitcher.setOnCheckedChangeListener { switcher, checked ->
             (applicationContext as Application).switchTheme(checked)
         }
-
     }
-
 }

@@ -1,11 +1,11 @@
 package com.example.playlistmaker.domain.impl
 
 import android.media.MediaPlayer
-import com.example.playlistmaker.Track
-import com.example.playlistmaker.domain.Constans.Companion.STATE_DEFAULT
-import com.example.playlistmaker.domain.Constans.Companion.STATE_PAUSED
-import com.example.playlistmaker.domain.Constans.Companion.STATE_PLAYING
-import com.example.playlistmaker.domain.Constans.Companion.STATE_PREPARED
+import com.example.playlistmaker.domain.models.Track
+import com.example.playlistmaker.domain.STATE_DEFAULT
+import com.example.playlistmaker.domain.STATE_PAUSED
+import com.example.playlistmaker.domain.STATE_PLAYING
+import com.example.playlistmaker.domain.STATE_PREPARED
 import com.example.playlistmaker.domain.api.PlayerInteractor
 
 class PlayerInteractorImpl(track: Track, private val mediaPlayer: MediaPlayer) :

@@ -19,7 +19,7 @@ import com.google.gson.Gson
 import android.view.inputmethod.EditorInfo
 import com.example.playlistmaker.History
 import com.example.playlistmaker.R
-import com.example.playlistmaker.Track
+import com.example.playlistmaker.domain.models.Track
 import com.example.playlistmaker.presentation.search.TracksAdapter
 import com.example.playlistmaker.data.network.Itunes
 import com.example.playlistmaker.ui.player.PlayerActivity
@@ -28,7 +28,6 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-
 
 class SearchActivity : AppCompatActivity() {
     companion object {
