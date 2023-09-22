@@ -3,7 +3,7 @@ package com.example.playlistmaker.utils
 import android.media.MediaPlayer
 import com.example.playlistmaker.domain.models.Track
 import com.example.playlistmaker.domain.api.PlayerInteractor
-import com.example.playlistmaker.domain.impl.PlayerInteractorImpl
+import com.example.playlistmaker.data.impl.PlayerInteractorImpl
 import com.example.playlistmaker.presentation.player.PlayerPresenter
 
 object Creator {
