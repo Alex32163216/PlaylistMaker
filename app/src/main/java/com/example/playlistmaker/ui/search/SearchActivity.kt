@@ -1,4 +1,4 @@
-package com.example.playlistmaker
+package com.example.playlistmaker.ui.search
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -10,13 +10,19 @@ import android.text.TextWatcher
 import android.view.inputmethod.InputMethodManager
 import android.util.Log
 import android.view.View
+import com.example.playlistmaker.data.dto.TrackResponse
 import android.text.Editable
-import com.example.playlistmaker.Application.Companion.APPLICATION
+import com.example.playlistmaker.presentation.app.Application.Companion.APPLICATION
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
 import android.view.inputmethod.EditorInfo
-import com.practicum.playlistmaker.apple.Itunes
+import com.example.playlistmaker.History
+import com.example.playlistmaker.R
+import com.example.playlistmaker.domain.models.Track
+import com.example.playlistmaker.presentation.search.TracksAdapter
+import com.example.playlistmaker.data.network.Itunes
+import com.example.playlistmaker.ui.player.PlayerActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -80,12 +86,6 @@ class SearchActivity : AppCompatActivity() {
             Log.i("i", "Текст запроса - $editRequest")
         }
 
-        //   override fun afterTextChanged(s: Editable?) {
-        //       if (enteringSearchQuery.hasFocus() && searchHistory.getList().isNotEmpty()) showState(
-        //           StateType.HISTORY_LIST
-        //      )
-        //     else showState(StateType.SEARCH_RESULT)
-        // }
         override fun afterTextChanged(s: Editable?) {}
     }
 
@@ -209,7 +209,7 @@ class SearchActivity : AppCompatActivity() {
                 progressBar.visibility = View.VISIBLE
             }
             StateType.SEARCH_RESULT -> {
-                trackAdapter.track = searchTrackList
+                trackAdapter.tracks = searchTrackList
                 recyclerViewTrack.adapter = trackAdapter
                 recyclerViewTrack.visibility = View.VISIBLE
                 errorPh.visibility = View.GONE
@@ -219,7 +219,7 @@ class SearchActivity : AppCompatActivity() {
                 progressBar.visibility = View.GONE
             }
             StateType.HISTORY_LIST -> {
-                historyTrackAdapter.track = searchHistory.getList()
+                historyTrackAdapter.tracks = searchHistory.getList()
                 recyclerViewTrack.adapter = historyTrackAdapter
                 recyclerViewTrack.visibility = View.VISIBLE
                 errorPh.visibility = View.GONE
@@ -258,11 +258,6 @@ class SearchActivity : AppCompatActivity() {
     }
 
     private fun clickOnTrack(track: Track) {
-        //  searchHistory.addTrack(track)
-        //  val playerIntent = Intent(this, PlayerActivity::class.java)
-        //  playerIntent.putExtra(TRACK,Gson().toJson(track))
-        //  startActivity(playerIntent)
-
         if (clickDebounce()) {
             searchHistory.addTrack(track)
             val playerIntent = Intent(this, PlayerActivity::class.java)
